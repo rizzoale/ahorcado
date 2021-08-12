@@ -10,5 +10,11 @@ Feature: Ahorcado tester
 
     Scenario: Adivinar letra incorrecta
     When inicio la aplicacion
+    And ingreso "B"
+    Then en las letras incorrectas esta "B - :("
+
+
+    Scenario: Adivinar letra correcta
+    When inicio la aplicacion
     And ingreso "A"
-    Then en las letras incorrectas esta "A - :("
+    Then en las letras incorrectas esta "A - :)"
