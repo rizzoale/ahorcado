@@ -2,12 +2,21 @@ require 'sinatra'
 require './config'
 require './lib/ahorcado'
 
+palabras = [
+    "CASA",
+    "PANTOMIMA",
+    "CONSTITUCION",
+    "ONOMATOPEYA",
+    "COSMICO"
+]
+
 ahorcado = Ahorcado.new
 ahorcado.set_secret_letter("CASA")
 
 get '/' do
     @guessed_letters = []
     @partial_word = ahorcado.get_partial_word()
+    @mensaje_final = ""
     erb :ahorcado
 end
 
@@ -19,6 +28,11 @@ post '/' do
     guessed_letters = ahorcado.get_played_letters()
     
     @guessed_letters = []
+    if (ahorcado.get_result())
+        @mensaje_final = "¡¡¡¡¡Ganaste!!!!!"
+    else
+        @mensaje_final = ""
+    end
     @partial_word = ahorcado.get_partial_word()
 
     guessed_letters.each_with_index do |l,i|

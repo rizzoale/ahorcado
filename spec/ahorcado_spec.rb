@@ -34,4 +34,26 @@ describe Ahorcado do
         ahorcado.guess_secret_letter("A")
         expect(ahorcado.get_partial_word()).to eq "-A-A"
     end
+
+    it "obtener resultado actual cuando arrancas" do
+        ahorcado = Ahorcado.new
+        ahorcado.set_secret_letter("CASA")
+        expect(ahorcado.get_result()).to eq false
+    end
+
+    it "obtener resultado actual mientras jugas" do
+        ahorcado = Ahorcado.new
+        ahorcado.set_secret_letter("CASA")
+        ahorcado.guess_secret_letter("A")
+        expect(ahorcado.get_result()).to eq false
+    end
+
+    it "obtener resultado actual cuando ganaste" do
+        ahorcado = Ahorcado.new
+        ahorcado.set_secret_letter("CASA")
+        ahorcado.guess_secret_letter("A")
+        ahorcado.guess_secret_letter("C")
+        ahorcado.guess_secret_letter("S")
+        expect(ahorcado.get_result()).to eq true
+    end
 end

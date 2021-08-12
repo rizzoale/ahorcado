@@ -40,4 +40,8 @@ class Ahorcado
     def get_played_letters() 
       return @played_letters
     end
+
+    def get_result()
+        return @partial_word == @secret_letter
+    end
 end

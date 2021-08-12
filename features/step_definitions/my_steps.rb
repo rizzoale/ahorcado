@@ -18,3 +18,7 @@ end
 Then("en las letras incorrectas esta {string}") do |string|
     expect(page).to have_css "div#letras_arriesgadas0", text: string
 end
+
+Then("muestra mensaje {string}") do |string|
+    expect(page).to have_css "div#mensaje_final", text: string
+  end

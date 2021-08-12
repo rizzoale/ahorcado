@@ -26,3 +26,4 @@ Feature: Ahorcado tester
     And ingreso "C"
     And ingreso "S"
     Then la incognita es "Adivina la palabra: CASA"
+    And muestra mensaje "¡¡¡¡¡Ganaste!!!!!"
