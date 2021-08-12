@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1 id="titulo">Ahorcado</h1>
-    <div id="incognita">Adivina la palabra: _</div>
+    <div id="incognita">Adivina la palabra: <%=@partial_word%></div>
     <form action="/" method="post">
         <input type="text" name="user_guess_letter" id="user_guess_letter"/>
         <input type="submit" value="¡Adivinar!"/>

@@ -15,10 +15,23 @@ describe Ahorcado do
     end
 
     it "obtener registro de letras jugadas (todas incorrectas)" do
-      ahorcado = Ahorcado.new
-      ahorcado.set_secret_letter "A"
-      ahorcado.guess_secret_letter("B")
-      ahorcado.guess_secret_letter("C")
-      expect(ahorcado.get_played_letters()).to eq [["C", false], ["B", false]]
+        ahorcado = Ahorcado.new
+        ahorcado.set_secret_letter "A"
+        ahorcado.guess_secret_letter("B")
+        ahorcado.guess_secret_letter("C")
+        expect(ahorcado.get_played_letters()).to eq [["C", false], ["B", false]]
+    end
+
+    it "obtener palabra secreta" do
+        ahorcado = Ahorcado.new
+        ahorcado.set_secret_letter("CASA")
+        expect(ahorcado.get_secret_word()).to eq "CASA"
+    end
+
+    it "obtener palabra parcial" do
+        ahorcado = Ahorcado.new
+        ahorcado.set_secret_letter("CASA")
+        ahorcado.guess_secret_letter("A")
+        expect(ahorcado.get_partial_word()).to eq "-A-A"
     end
 end

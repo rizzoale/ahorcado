@@ -3,10 +3,11 @@ require './config'
 require './lib/ahorcado'
 
 ahorcado = Ahorcado.new
-ahorcado.set_secret_letter("A")
+ahorcado.set_secret_letter("CASA")
 
 get '/' do
     @guessed_letters = []
+    @partial_word = ahorcado.get_partial_word()
     erb :ahorcado
 end
 
@@ -18,6 +19,7 @@ post '/' do
     guessed_letters = ahorcado.get_played_letters()
     
     @guessed_letters = []
+    @partial_word = ahorcado.get_partial_word()
 
     guessed_letters.each_with_index do |l,i|
         if (l[1])
